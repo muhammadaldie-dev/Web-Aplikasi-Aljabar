@@ -1,0 +1,607 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.menu-tabs {
+    display: flex;
+    background: #f5f5f5;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+    background: #e8e8e8;
+    color: #333;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.tab-content {
+    display: none;
+    padding: 30px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.input-section {
+    margin-bottom: 25px;
+}
+
+.matrix-input {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.matrix-input h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.matrix-size-input {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.matrix-size-input label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.matrix-size-input input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80px;
+    font-size: 1em;
+}
+
+.matrix-size-input button,
+.calculate-btn {
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.matrix-size-input button:hover,
+.calculate-btn:hover {
+    background: #5568d3;
+}
+
+.matrix-grid {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.matrix-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.matrix-cell {
+    width: 70px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.matrix-cell:focus {
+    outline: 2px solid #667eea;
+    border-color: #667eea;
+}
+
+.equation-input {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.equation-input h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.equation-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.equation-row input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 120px;
+    font-size: 1em;
+}
+
+.equation-row input:focus {
+    outline: 2px solid #667eea;
+    border-color: #667eea;
+}
+
+.equation-row span {
+    font-weight: 500;
+    color: #666;
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+.results {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f0f7ff;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.results h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.step {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+}
+
+.matrix-display {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.matrix-display-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.matrix-display-cell {
+    min-width: 60px;
+    padding: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.error {
+    color: #e74c3c;
+    padding: 15px;
+    background: #ffeaea;
+    border-radius: 5px;
+    border-left: 4px solid #e74c3c;
+    margin-top: 15px;
+}
+
+.success {
+    color: #27ae60;
+    padding: 15px;
+    background: #eafaf1;
+    border-radius: 5px;
+    border-left: 4px solid #27ae60;
+    margin-top: 15px;
+}
+
+.operation-steps {
+    margin-top: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.operation-steps .step {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 0.95em;
+}
+
+.matrix-bracket {
+    margin: 12px 0;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: #111827;
+    color: #f9fafb;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: inline-block;
+}
+
+.matrix-bracket-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.matrix-bracket-side {
+    padding: 0 4px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.matrix-bracket-cells {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.matrix-bracket-bar {
+    padding: 0 4px;
+    font-weight: 600;
+}
+
+.matrix-bracket-bar.dashed {
+    border-left: 1px dashed #333;
+    padding: 0;
+    margin: 0 4px;
+    width: 0;
+    height: 1.2em;
+    display: inline-block;
+}
+
+.matrix-bracket-cell {
+    min-width: 32px;
+    text-align: center;
+}
+
+.matrix-frac {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matrix-frac-body {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 2px;
+}
+
+.matrix-frac-num {
+    border-bottom: 1px solid currentColor;
+    padding: 0 2px 1px;
+    line-height: 1.1;
+}
+
+.matrix-frac-den {
+    padding-top: 1px;
+    line-height: 1.1;
+}
+
+/* Matrix Operations Visualization */
+.matrix-op-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.matrix-op-symbol {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.matrix-calc-row {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    transition: background 0.2s;
+}
+
+.matrix-calc-row:hover {
+    background: #f8f9fa;
+    border-color: #667eea;
+}
+
+.calc-header {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.calc-detail {
+    color: #555;
+    padding-left: 20px;
+}
+
+.calc-result {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Intermediate Matrix Cell (showing calculation) */
+.matrix-cell-calc {
+    font-size: 0.85em;
+    color: #666;
+    white-space: nowrap;
+    padding: 0 5px;
+}
+
+.cramer-notebook {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    font-family: 'Segoe UI', sans-serif;
+    color: #2c3e50;
+    border: 1px solid #eee;
+    background-image: linear-gradient(#e8f0f8 1px, transparent 1px);
+    background-size: 100% 2em;
+    line-height: 2em;
+}
+
+.notebook-section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #cbd5e0;
+}
+
+.notebook-section:last-child {
+    border-bottom: none;
+}
+
+.equations-box {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 1.1em;
+    background: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.ab-row {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cramer-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.6);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.cramer-matrix-container,
+.cramer-sarrus-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cramer-label {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+.cramer-calc-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+    padding-left: 10px;
+    border-left: 2px solid #e2e8f0;
+    min-width: 250px; /* Prevent it from being too squashed */
+}
+
+.calc-line {
+    padding: 5px 0;
+}
+
+.calc-line.indent {
+    padding-left: 20px;
+}
+
+.det-label {
+    font-weight: bold;
+}
+
+.calc-val {
+    color: #4a5568;
+}
+
+.calc-val.result {
+    color: #2b6cb0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.final-results {
+    background: #f0f9ff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #bee3f8;
+}
+
+.result-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.fraction {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.numerator {
+    border-bottom: 2px solid #2c3e50;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.denominator {
+    padding: 0 5px;
+    text-align: center;
+}
+
+.verification-box h4 {
+    margin-bottom: 15px;
+    color: #2d3748;
+}
+
+.verify-row {
+    font-family: 'Courier New', monospace;
+    margin-bottom: 8px;
+    padding: 5px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .menu-tabs {
+        flex-direction: column;
+    }
+
+    .tab-content {
+        padding: 20px;
+    }
+
+    .matrix-size-input {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .equation-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .equation-row span {
+        display: none;
+    }
+    
+    .cramer-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cramer-calc-container {
+        border-left: none;
+        border-top: 2px solid #e2e8f0;
+        padding-top: 10px;
+        padding-left: 0;
+        width: 100%;
+    }
+}
